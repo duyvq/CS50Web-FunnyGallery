@@ -1,0 +1,119 @@
+{% extends 'gallery/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+<div class="submit-view">
+    <div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+        <div class="modal-dialog-submision" role="document">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header p-5 pb-4 border-bottom-0">
+                    <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
+                    <h1 class="fw-bold mb-0 fs-2">Create a meme</h1>
+                    <!-- <a href="{% url 'index' %}">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </a> -->
+                </div>
+    
+                <!-- {% if message %}
+                <div>{{ message }}</div>
+                {% endif %} -->
+        
+                <div class="modal-body p-5 pt-0">
+                    <form class="submit-form" action="{% url 'upload' %}" method="post" enctype=multipart/form-data>
+                        {% csrf_token %}
+                        <div class="form-floating mb-3">
+                            <input class="form-control rounded-3" id="floatingInput" type="text" name="fileName" placeholder="Title" maxlength="80">
+                            <label for="floatingInput">Title</label>
+                        </div>
+                        <div class="form-floating mb-3" style="height: 40vw;">
+                            <div class="form-control rounded-3" style="height: 100%;">
+                                <div class="file-card-wrapper meme">
+                                    <div class="file-card-content meme">
+                                        <div class="upload-card">
+                                            <div class="upload-content-wrapper">
+                                                <span class="card-picture">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-image-fill" viewBox="0 0 16 16"> <path d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/></svg>
+                                                </span>
+                                                <span class="card-text">Upload</span>
+                                                <span class="file-uploads file-uploads-html5 file-uploads-drop">
+                                                    <button class="ui-btn btn-color-primary" type="button">Choose file...</button>
+                                                </span>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="file"></label>
+                                        <input type="file" name="picture" id="file" accept="image/jpeg, image/jpg, image/png, image/gif"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <p>(Below fields are optional)</p> -->
+                        <div class="meme-text">
+                            <div class="upper-text-option">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control rounded-3 meme-upper-text" id="floatingInput" type="text" name="fileName" placeholder="Title" maxlength="80">
+                                    <label for="floatingInput">Upper Text</label>
+                                </div>
+                                <div style="display: flex;">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control rounded-3 upper-text-size" type="number" name="size" value="50" min="1" max="999">
+                                        <label for="floatingInput">Size</label>
+                                    </div>
+                                    <select class="form-select form-floating mb-3 upper-text-color">
+                                        <option selected value="black">Black</option>
+                                        <option value="white">White</option>
+                                        <option value="red">Red</option>
+                                        <label for="floatingInput">Color</label>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="lower-text-option">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control rounded-3 meme-lower-text" id="floatingInput" type="text" name="fileName" placeholder="Title" maxlength="80">
+                                    <label for="floatingInput">Lower Text</label>
+                                </div>
+                                <div style="display: flex;">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control rounded-3 lower-text-size" type="number" name="size" value="50" min="1" max="999">
+                                        <label for="floatingInput">Size</label>
+                                    </div>
+                                    <select class="form-select form-floating mb-3 lower-text-color">
+                                        <option selected value="black">Black</option>
+                                        <option value="white">White</option>
+                                        <option value="red">Red</option>
+                                        <label for="floatingInput">Color</label>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="form-floating mb-3" 
+                                style="box-shadow: 0px 0px 0px 1px #ced4da;
+                                border-radius: 0.5rem !important;">
+                            <textarea class="form-control rounded-3" id="floatingInput" placeholder="(Optional) Description - max: 700 chars" rows="5" maxlength="700" 
+                                    name="photoDescription"
+                                    style="padding-top: 0px;
+                                    border-color: white currentcolor currentcolor;
+                                    border-style: solid none none;
+                                    border-width: 30px 0px 0px;
+                                    border-image: none 100% / 1 / 0 stretch;
+                                    min-height: 150px;
+                                    resize: none"></textarea>
+                            <label for="floatingInput">Description - max: 700 chars</label>
+                        </div>
+                        
+                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" disabled>Upload</button>
+                    </form>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary download" type="button" disabled>Or download to your PC</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'gallery/upload-meme.js' %}"></script>
+{% endblock %}

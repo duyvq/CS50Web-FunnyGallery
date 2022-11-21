@@ -1,0 +1,53 @@
+{% extends 'gallery/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+<div class="album py-5 bg-light">
+    <div class="left-bar" style="width:25vw; height: 100vh">
+        <div style="width:100%;"></div>
+    </div>
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% if error %}
+                <p class="error-mes">{{ error }}</p>
+            {% endif%}
+            {% if result %}
+                <p class="search-mes">{{ message }}</p>
+            {% for item in result %}
+                <div class="col-search">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text">{{item.photoName}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                                </div>
+                                <small class="text-muted">{{item.timeStamp}}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="picture-holder">
+                        <a class="bd-placeholder-img card-img-top" href="#">
+                            <img class="picture-overview" src="upload/{{item.picture}}">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            {% else %}
+            <div class="col">
+                
+            </div>
+            {% endif %}
+            
+        </div>
+    </div>
+    <div class="right-bar" style="width:25vw; height: 100vh;"></div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'gallery/index.js' %}"></script>
+{% endblock %}
