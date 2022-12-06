@@ -3,7 +3,7 @@
 Final Project for [CS50's Web Programming with Python and JavaScript.](https://cs50.harvard.edu/web/2020)
 
 
-[Demo](https://youtu.be/hrxoSfEu-gg)
+[Demo](https://youtu.be/lz307Ldm1Lw)
 
 
 Thanks to the all lecturers and staffs.
@@ -22,7 +22,7 @@ This web application is distinct from the other projects in this course and is n
 It is neither a social network project nor an e-commerce project. It a social media platform where user create meme and publish it.
 It is more complex than the other projects as:
 - The login/register is single page application using AJAX to communicate with back-end, to have a bit more friendly UX.
-- It allows user to preview picture before publish, or write text dynamically to picture (using base64encode/decode) to make meme then publish.
+- It allows user to preview picture before publish, or write text dynamically to picture (using base64encode/decode) to make meme then publish (or just download it to their PC).
 - It allows user to reply on a specific comment dynamically.
 - It uses 4 models.
 - It is mobile-responsive with the help of Bootstrap and some custom CSS.
@@ -49,7 +49,7 @@ To run this project locally, follow these steps
 1. Clone this repo or download zip
 2. Unzip it
 3. In a terminal, navigate to the project directory
-4. Create virtual environment and activate, Link for official instruction
+4. Create virtual environment and activate, [Link for official instruction](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment)
 4. Install the requirements `pip3 install -r requirements.txt`
 6. Run the django server `python3 manage.py runserver`
 7. Enter URL and browse
