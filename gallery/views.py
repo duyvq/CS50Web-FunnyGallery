@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.core.files.base import ContentFile
 import json, datetime, base64
 from django import forms
@@ -19,10 +19,12 @@ class NewUpload(forms.Form):
 
 
 # Create your views here.
+@ensure_csrf_cookie
 def index(request):
     return render(request, 'gallery/index.html')
 
 
+@ensure_csrf_cookie
 def login_view(request):
     if request.method == 'POST':
         

@@ -198,6 +198,8 @@ function getCookie(name) {
   }
   return cookieValue;
 };
+const csrftoken = getCookie('csrftoken');
+
 
 function loginButtonEvent() {
   // Add event to login button
@@ -220,12 +222,11 @@ function submitLogin() {
 
   var username = document.querySelector('input[name=username]').value;
   var password = document.querySelector('input[name=password]').value;
-
-  const csrftoken = getCookie('csrftoken');
-
+  console.log(csrftoken);
   var url = `${window.location.origin}/login`;
   fetch(url, {
     method: 'POST',
+    credentials: 'include',
     headers: {'X-CSRFToken': csrftoken},
     mode: 'same-origin',
     body: JSON.stringify({
@@ -274,8 +275,6 @@ function submitRegister() {
   var email = document.querySelector('input[type=email]').value;
   var password = document.querySelector('input[type=password]').value;
   var confirmation = document.querySelector('input[name=confirmation]').value;
-
-  const csrftoken = getCookie('csrftoken');
 
   var url = `${window.location.origin}/register`;
   fetch(url, {
